@@ -34,7 +34,7 @@ module.exports = function (defaults) {
             plugins: [new BundleAnalyzerPlugin()],
           },
         },
-        // splitAtRoutes: ['blog', 'blog.post'],
+        splitAtRoutes: ['blog', 'blog.post'],
       });
   }
 
