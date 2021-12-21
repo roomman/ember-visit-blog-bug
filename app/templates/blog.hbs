@@ -1,29 +1,20 @@
 {{page-title 'Blog'}}
 {{#if this.cardView}}
-  <div class='grid max-w-lg gap-5 mx-auto lg:grid-cols-3 lg:max-w-none'>
-    {{#if this.model.isLoading}}
-      <Blog::CardItemLoading />
-      <Blog::CardItemLoading />
-      <Blog::CardItemLoading />
-      <Blog::CardItemLoading />
-      <Blog::CardItemLoading />
+  <div>
+    {{#if this.isLoading}}
       <Blog::CardItemLoading />
     {{else}}
-      {{#each this.model.content.items as |blogPost|}}
+      {{#each this.content as |blogPost|}}
         <Blog::CardItem @blogPost={{blogPost}} @locale={{this.locale}} />
       {{/each}}
     {{/if}}
   </div>
 {{else}}
-  <ul class='divide-y divide-gray-200'>
-    {{#if this.model.isLoading}}
-      <Blog::ListItemLoading />
-      <Blog::ListItemLoading />
-      <Blog::ListItemLoading />
-      <Blog::ListItemLoading />
+  <ul>
+    {{#if this.isLoading}}
       <Blog::ListItemLoading />
     {{else}}
-      {{#each this.model.content.items as |blogPost|}}
+      {{#each this.content as |blogPost|}}
         <Blog::ListItem @blogPost={{blogPost}} @locale={{this.locale}} />
       {{/each}}
     {{/if}}
