@@ -1,0 +1,49 @@
+<li class='py-12'>
+  <article
+    class='space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline'
+  >
+    <dl>
+      <dt class='sr-only'>
+        Published on
+      </dt>
+      <dt
+        class='text-base font-medium text-gray-500 cursor-default select-none'
+      >
+        <time datetime={{@blogPost.publishedAt}}>
+          {{date-format @blogPost.publishedAt locale=@locale}}
+        </time>
+      </dt>
+    </dl>
+    <div class='space-y-5 xl:col-span-3'>
+      <div class='space-y-6'>
+        <LinkTo
+          class='text-gray-900 hover:underline'
+          @route='blog.post'
+          @model={{@blogPost.slug}}
+          aria-label={{concat "Read '" @blogPost.title "'"}}
+        >
+          <h2 class='text-2xl font-bold tracking-tight'>
+            {{@blogPost.title}}
+          </h2>
+        </LinkTo>
+        <div class='prose text-gray-500 max-w-none'>
+          <p>
+            {{@blogPost.excerpt}}
+          </p>
+        </div>
+        <div class='text-base font-medium'>
+          <LinkTo
+            class='text-primary-600 hover:text-primary-700'
+            @route='blog.post'
+            @model={{@blogPost.slug}}
+            aria-label={{concat "Read '" @blogPost.title "'"}}
+          >
+            <span>
+              Read more →
+            </span>
+          </LinkTo>
+        </div>
+      </div>
+    </div>
+  </article>
+</li>

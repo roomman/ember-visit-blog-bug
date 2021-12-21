@@ -1,2 +1,45 @@
-{{page-title "Post"}}
-{{outlet}}
+{{page-title this.model.post.title}}
+
+{{#let this.model.post as |post|}}
+  <div class='my-6 lg:my-8'>
+    <article
+      class='max-w-5xl mx-auto prose divide-y divide-gray-300 sm:px-6 lg:px-8 prose-primary md:prose-lg lg:prose-xl'
+    >
+      <div class='pt-6 pb-8 mb-4 space-y-2 text-center'>
+        <p class='font-normal tracking-wider text-gray-500 text-md'>
+          {{date-format post.publishedAt}}
+        </p>
+        <h1 class='tracking-tight'>
+          {{post.title}}
+        </h1>
+      </div>
+      <div class='grid grid-cols-5'>
+        <div class='col-span-1'>
+          <div class='pt-6 text-base font-medium'>
+            <LinkTo
+              class='no-underline text-primary-600 hover:text-primary-700'
+              @route='blog'
+              aria-label='Back to all Posts'
+            >
+              <span>
+                ← Back to blog
+              </span>
+            </LinkTo>
+          </div>
+        </div>
+        <div class='flex justify-center col-span-4 px-6'>
+          <div class='relative'>
+            <img
+              src={{post.coverImage.url}}
+              alt={{post.coverImage.alt}}
+              class='w-screen'
+            />
+            <div>
+              {{markdown-to-html post.mainContent}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+{{/let}}

@@ -1,0 +1,47 @@
+<div class='flex flex-col overflow-hidden rounded-lg shadow-lg'>
+  <div class='flex-shrink-0'>
+    <img
+      class='object-cover w-full h-48 bg-gray-300'
+      src={{@blogPost.thumbnailImage.url}}
+      alt={{@blogPost.thumbnailImage.alt}}
+    />
+  </div>
+  <div class='flex flex-col justify-between flex-1 p-6 bg-white'>
+    <div class='flex-1'>
+      <p class='text-sm font-medium text-primary-600'>
+        <time datetime={{@blogPost.publishedAt}}>
+          {{date-format @blogPost.publishedAt locale=@locale}}
+        </time>
+      </p>
+      <a href='#' class='block mt-2'>
+        <LinkTo
+          class='text-gray-900 hover:underline'
+          @route='blog.post'
+          @model={{@blogPost.slug}}
+          aria-label={{concat "Read '" @blogPost.title "'"}}
+        >
+          <p class='text-xl font-semibold'>
+            {{@blogPost.title}}
+          </p>
+        </LinkTo>
+        <p class='mt-3 text-base text-gray-500'>
+          {{@blogPost.excerpt}}
+        </p>
+      </a>
+    </div>
+    <div class='flex items-center mt-6'>
+      <div class='text-base font-medium'>
+        <LinkTo
+          class='text-primary-600 hover:text-primary-700'
+          @route='blog.post'
+          @model={{@blogPost.slug}}
+          aria-label={{concat "Read '" @blogPost.title "'"}}
+        >
+          <span>
+            Read more →
+          </span>
+        </LinkTo>
+      </div>
+    </div>
+  </div>
+</div>
